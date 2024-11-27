@@ -183,13 +183,13 @@ if success then
             datapointer[dataindex].z  = vert[3]
             datapointer[dataindex].u  = vert[4] or 0
             datapointer[dataindex].v  = vert[5] or 0
-            datapointer[dataindex].nx = vert[6] or 0
-            datapointer[dataindex].ny = vert[7] or 0
-            datapointer[dataindex].nz = vert[8] or 0
-            datapointer[dataindex].r  = (vert[9] or 1)*255
-            datapointer[dataindex].g  = (vert[10] or 1)*255
-            datapointer[dataindex].b  = (vert[11] or 1)*255
-            datapointer[dataindex].a  = (vert[12] or 1)*255
+            datapointer[dataindex].r  =(vert[6] or 1)*255
+            datapointer[dataindex].g  =(vert[7] or 1)*255
+            datapointer[dataindex].b  =(vert[8] or 1)*255
+            datapointer[dataindex].a  =(vert[9] or 1)*255
+            datapointer[dataindex].nx = vert[10] or 0
+            datapointer[dataindex].ny = vert[11] or 0
+            datapointer[dataindex].nz = vert[12] or 0
         end
 
         self.mesh:release()

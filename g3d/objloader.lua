@@ -56,6 +56,7 @@ return function (path, uFlip, vFlip)
                     v and positions[v][3] or 0,
                     vt and uvs[vt][1] or 0,
                     vt and uvs[vt][2] or 0,
+                    1,1,1,1,
                     vn and normals[vn][1] or 0,
                     vn and normals[vn][2] or 0,
                     vn and normals[vn][3] or 0,

@@ -20,10 +20,10 @@ model.__index = model
 -- define some default properties that every model should inherit
 -- that being the standard vertexFormat and basic 3D shader
 model.vertexFormat = {
-    {"VertexPosition", "float", 3},
-    {"VertexTexCoord", "float", 2},
-    {"VertexNormal", "float", 3},
-    {"VertexColor", "byte", 4},
+    { name = "VertexPosition", format = "floatvec3", location = 0 },
+    { name = "VertexTexCoord", format = "floatvec2", location = 1 },
+    { name = "VertexColor",    format = "unorm8vec4", location = 2 },
+    { name = "VertexNormal",   format = "floatvec3", location = 3 },
 }
 model.shader = g3d.shader
 
@@ -141,15 +141,13 @@ function model:updateMatrix()
 end
 
 -- draw the model
-function model:draw(shader)
+function model:draw(shader, cam)
     local shader = shader or self.shader
+    local cam = cam or camera.current()
     love.graphics.setShader(shader)
     shader:send("modelMatrix", self.matrix)
-    shader:send("viewMatrix", camera.viewMatrix)
-    shader:send("projectionMatrix", camera.projectionMatrix)
-    if shader:hasUniform "isCanvasEnabled" then
-        shader:send("isCanvasEnabled", love.graphics.getCanvas() ~= nil)
-    end
+    shader:send("viewMatrix", cam:getViewMatrix())
+    shader:send("projectionMatrix", cam:getProjectionMatrix())
     love.graphics.draw(self.mesh)
     love.graphics.setShader()
 end

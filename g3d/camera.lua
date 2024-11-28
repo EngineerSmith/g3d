@@ -1,4 +1,3 @@
-
 local newMatrix = require(g3d.path .. ".matrices")
 local g3d = g3d -- save a reference to g3d in case the user makes it non-global
 
@@ -67,12 +66,12 @@ end
 
 -- give the camera a point to look from and a point to look towards
 function camera:lookAt(x,y,z, xAt,yAt,zAt)
-    self.position[1] = x
-    self.position[2] = y
-    self.position[3] = z
-    self.target[1] = xAt
-    self.target[2] = yAt
-    self.target[3] = zAt
+    self.position[1] = x or self.position[1]
+    self.position[2] = y or self.position[2]
+    self.position[3] = z or self.position[3]
+    self.target[1] = xAt or self.target[1]
+    self.target[2] = yAt or self.target[2]
+    self.target[3] = zAt or self.target[3]
 
     -- update the fpsController's direction and pitch based on lookAt
     local dx,dy,dz = self:getLookVector()
